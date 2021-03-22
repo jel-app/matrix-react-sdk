@@ -16,6 +16,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+const ROOM_ONLY = true;
+
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { MatrixClient } from 'matrix-js-sdk/src/client';
@@ -192,9 +194,11 @@ class LoggedInView extends React.Component<IProps, IState> {
             "useCompactLayout", null, this.onCompactLayoutChanged,
         );
 
-        this.resizer = this._createResizer();
-        this.resizer.attach();
-        this._loadResizerPreferences();
+        if (!ROOM_ONLY) {
+            this.resizer = this._createResizer();
+            this.resizer.attach();
+            this._loadResizerPreferences();
+        }
     }
 
     componentWillUnmount() {
@@ -203,7 +207,10 @@ class LoggedInView extends React.Component<IProps, IState> {
         this._matrixClient.removeListener("sync", this.onSync);
         this._matrixClient.removeListener("RoomState.events", this.onRoomStateEvents);
         SettingsStore.unwatchSetting(this.compactLayoutWatcherRef);
-        this.resizer.detach();
+
+        if (this.resizer) {
+            this.resizer.detach();
+        }
     }
 
     // Child components assume that the client peg will not be null, so give them some
@@ -683,18 +690,24 @@ class LoggedInView extends React.Component<IProps, IState> {
                     className='mx_MatrixChat_wrapper'
                     aria-hidden={this.props.hideToSRUsers}
                 >
-                    <ToastContainer />
+                    { !ROOM_ONLY && <ToastContainer />}
                     <DragDropContext onDragEnd={this._onDragEnd}>
-                        <div ref={this._resizeContainer} className={bodyClasses}>
-                            { leftPanel }
-                            <ResizeHandle />
-                            { pageElement }
-                        </div>
+                        { ROOM_ONLY ?
+                            (<div className={bodyClasses}>
+                                { pageElement }
+                            </div>)
+                            :
+                            (<div ref={this._resizeContainer} className={bodyClasses}>
+                                { leftPanel }
+                                <ResizeHandle />
+                                { pageElement }
+                            </div>)
+                        }
                     </DragDropContext>
                 </div>
-                <CallContainer />
-                <NonUrgentToastContainer />
-                <HostSignupContainer />
+                { !ROOM_ONLY && <CallContainer />}
+                { !ROOM_ONLY && <NonUrgentToastContainer />}
+                { !ROOM_ONLY && <HostSignupContainer />}
             </MatrixClientContext.Provider>
         );
     }

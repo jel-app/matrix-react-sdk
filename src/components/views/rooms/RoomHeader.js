@@ -33,6 +33,8 @@ import RoomTopic from "../elements/RoomTopic";
 import RoomName from "../elements/RoomName";
 import {PlaceCallType} from "../../../CallHandler";
 
+const ROOM_ONLY = true;
+
 export default class RoomHeader extends React.Component {
     static propTypes = {
         room: PropTypes.object,
@@ -264,8 +266,8 @@ export default class RoomHeader extends React.Component {
                     { name }
                     { topicElement }
                     { cancelButton }
-                    { rightRow }
-                    <RoomHeaderButtons />
+                    { !ROOM_ONLY && rightRow }
+                    { !ROOM_ONLY && <RoomHeaderButtons />}
                 </div>
             </div>
         );
