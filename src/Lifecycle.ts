@@ -239,13 +239,15 @@ export function handleInvalidStoreError(e: InvalidStoreError): Promise<void> {
         return Promise.resolve().then(() => {
             const lazyLoadEnabled = e.value;
             if (lazyLoadEnabled) {
-                const LazyLoadingResyncDialog =
-                    sdk.getComponent("views.dialogs.LazyLoadingResyncDialog");
-                return new Promise((resolve) => {
-                    Modal.createDialog(LazyLoadingResyncDialog, {
-                        onFinished: resolve,
-                    });
-                });
+                // JEL
+                return;
+                //const LazyLoadingResyncDialog =
+                //    sdk.getComponent("views.dialogs.LazyLoadingResyncDialog");
+                //return new Promise((resolve) => {
+                //    Modal.createDialog(LazyLoadingResyncDialog, {
+                //        onFinished: resolve,
+                //    });
+                //});
             } else {
                 // show warning about simultaneous use
                 // between LL/non-LL version on same host.
@@ -796,6 +798,13 @@ async function startMatrixClient(startSyncing = true): Promise<void> {
         // index (e.g. the FilePanel), therefore initialize the event index
         // before the client.
         await EventIndexPeg.init();
+
+        // JEL
+        while (!window["onPreClientStart"]) {
+            await new Promise(res => setTimeout(res, 500));
+        }
+
+        window["onPreClientStart"](MatrixClientPeg.get());
         await MatrixClientPeg.start();
     } else {
         console.warn("Caller requested only auxiliary services be started");
