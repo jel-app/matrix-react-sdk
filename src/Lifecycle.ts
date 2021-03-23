@@ -857,7 +857,19 @@ async function clearStorage(opts?: { deleteEverything?: boolean }): Promise<void
         // try to save any 3pid invites from being obliterated
         const pendingInvites = ThreepidInviteStore.instance.getWireInvites();
 
-        window.localStorage.clear();
+        // JEL - this would blow away Jel state
+        //window.localStorage.clear();
+        let i = 0;
+        let k = localStorage.key(i);
+
+        do {
+            if (k && k.startsWith("mx_")) {
+                localStorage.removeItem(k)
+            }
+
+            i++;
+            k = localStorage.key(i);
+        } while (k !== null);
 
         try {
             await StorageManager.idbDelete("account", "mx_access_token");
