@@ -700,7 +700,7 @@ let _isLoggingOut = false;
 /**
  * Logs the current session out and transitions to the logged-out state
  */
-export function logout(): void {
+export function logout(): Promise<void> {
     if (!MatrixClientPeg.get()) return;
     if (!CountlyAnalytics.instance.disabled) {
         // user has logged out, fall back to anonymous
@@ -718,19 +718,27 @@ export function logout(): void {
     _isLoggingOut = true;
     const client = MatrixClientPeg.get();
     PlatformPeg.get().destroyPickleKey(client.getUserId(), client.getDeviceId());
-    client.logout().then(onLoggedOut,
-        (err) => {
-            // Just throwing an error here is going to be very unhelpful
-            // if you're trying to log out because your server's down and
-            // you want to log into a different server, so just forget the
-            // access token. It's annoying that this will leave the access
-            // token still valid, but we should fix this by having access
-            // tokens expire (and if you really think you've been compromised,
-            // change your password).
-            console.log("Failed to call logout API: token will not be invalidated");
-            onLoggedOut();
-        },
-    );
+
+    return new Promise(res => {
+        client.logout().then(
+            () => {
+                onLoggedOut(),
+                res();
+            },
+            (err) => {
+                // Just throwing an error here is going to be very unhelpful
+                // if you're trying to log out because your server's down and
+                // you want to log into a different server, so just forget the
+                // access token. It's annoying that this will leave the access
+                // token still valid, but we should fix this by having access
+                // tokens expire (and if you really think you've been compromised,
+                // change your password).
+                console.log("Failed to call logout API: token will not be invalidated");
+                onLoggedOut();
+                res();
+            },
+        );
+    });
 }
 
 export function softLogout(): void {
