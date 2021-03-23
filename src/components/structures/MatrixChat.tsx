@@ -472,6 +472,11 @@ export default class MatrixChat extends React.PureComponent<IProps, IState> {
             } else if (SettingsStore.getValue("analyticsOptIn")) {
                 CountlyAnalytics.instance.enable(/* anonymous = */ false);
             }
+
+            // JEL
+            if (window["getLoadedSessionResolver"]) {
+                window["getLoadedSessionResolver"](loadedSession);
+            }
         });
         // Note we don't catch errors from this: we catch everything within
         // loadSession as there's logic there to ask the user if they want
