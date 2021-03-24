@@ -377,6 +377,13 @@ export default class SendMessageComposer extends React.Component {
             const startTime = CountlyAnalytics.getTimestamp();
             const {roomId} = this.props.room;
             const content = createMessageContent(this.model, this.props.permalinkCreator, replyToEvent);
+
+            // JEL include spaceroom id to allow push filtering
+            for (const spaceRoomId of this.props.room.currentState.events.get("m.space.parent").keys()) {
+                content.spaceroom_id = spaceRoomId;
+                break;
+            }
+
             // don't bother sending an empty message
             if (!content.body.trim()) return;
 

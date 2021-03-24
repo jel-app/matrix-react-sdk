@@ -80,6 +80,12 @@ function createEditContent(model, editedEvent) {
         "msgtype": isEmote ? "m.emote" : "m.text",
         "body": body,
     };
+
+    // JEL
+    if (editedEvent.getContent().spaceroom_id) {
+        newContent.spaceroom_id = editedEvent.getContent().spaceroom_id;
+    }
+
     const contentBody = {
         msgtype: newContent.msgtype,
         body: `${plainPrefix} * ${body}`,

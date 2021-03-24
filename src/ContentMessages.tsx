@@ -59,6 +59,8 @@ interface IMediaConfig {
 interface IContent {
     body: string;
     msgtype: string;
+    // eslint-disable-next-line camelcase
+    spaceroom_id?: string,
     info: {
         size: number;
         mimetype?: string;
@@ -567,6 +569,15 @@ export default class ContentMessages {
             return promBefore;
         }).then(function() {
             if (upload.canceled) throw new UploadCanceledError();
+
+            const room = MatrixClientPeg.get().getRoom(roomId);
+
+            // JEL - Include spaceroom id to allow push filtering.
+            for (const spaceRoomId of room.currentState.events.get("m.space.parent").keys()) {
+                content.spaceroom_id = spaceRoomId;
+                break;
+            }
+
             const prom = matrixClient.sendMessage(roomId, content);
             CountlyAnalytics.instance.trackSendMessage(startTime, prom, roomId, false, false, content);
             return prom;
