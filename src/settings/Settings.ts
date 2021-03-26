@@ -125,7 +125,7 @@ export const SETTINGS: {[setting: string]: ISetting} = {
         displayName: _td("Spaces prototype. Incompatible with Communities, Communities v2 and Custom Tags. " +
             "Requires compatible homeserver for some features."),
         supportedLevels: LEVELS_FEATURE,
-        default: false,
+        default: true,
         controller: new ReloadOnChangeController(),
     },
     "feature_latex_maths": {

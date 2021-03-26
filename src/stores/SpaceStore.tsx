@@ -117,22 +117,23 @@ export class SpaceStoreClass extends AsyncStoreWithClient<IState> {
             window.localStorage.removeItem(ACTIVE_SPACE_LS_KEY);
         }
 
-        if (space) {
-            try {
-                const data: {
-                    rooms: ISpaceSummaryRoom[];
-                    events: ISpaceSummaryEvent[];
-                } = await this.matrixClient.getSpaceSummary(space.roomId, 0, true, false, MAX_SUGGESTED_ROOMS);
-                if (this._activeSpace === space) {
-                    this._suggestedRooms = data.rooms.filter(roomInfo => {
-                        return roomInfo.room_type !== RoomType.Space && !this.matrixClient.getRoom(roomInfo.room_id);
-                    });
-                    this.emit(SUGGESTED_ROOMS, this._suggestedRooms);
-                }
-            } catch (e) {
-                console.error(e);
-            }
-        }
+        // JEL unsupported MSC2946 API
+        // if (space) {
+        //     try {
+        //         const data: {
+        //             rooms: ISpaceSummaryRoom[];
+        //             events: ISpaceSummaryEvent[];
+        //         } = await this.matrixClient.getSpaceSummary(space.roomId, 0, true, false, MAX_SUGGESTED_ROOMS);
+        //         if (this._activeSpace === space) {
+        //             this._suggestedRooms = data.rooms.filter(roomInfo => {
+        //                 return roomInfo.room_type !== RoomType.Space && !this.matrixClient.getRoom(roomInfo.room_id);
+        //             });
+        //             this.emit(SUGGESTED_ROOMS, this._suggestedRooms);
+        //         }
+        //     } catch (e) {
+        //         console.error(e);
+        //     }
+        // }
     }
 
     public addRoomToSpace(space: Room, roomId: string, via: string[], suggested = false, autoJoin = false) {
