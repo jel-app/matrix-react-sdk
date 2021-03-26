@@ -54,12 +54,15 @@ export class RoomListStoreClass extends AsyncStoreWithClient<IState> {
      */
     public static TEST_MODE = false;
 
+    private enabled = true; // JEL allow disabling, since Jel does not need RoomListStore
     private initialListsGenerated = false;
     private algorithm = new Algorithm();
     private filterConditions: IFilterCondition[] = [];
     private tagWatcher: TagWatcher;
     private spaceWatcher: SpaceWatcher;
     private updateFn = new MarkedExecution(() => {
+        if (!this.enabled) return;
+
         for (const tagId of Object.keys(this.orderedLists)) {
             RoomNotificationStateStore.instance.getListState(tagId).setRooms(this.orderedLists[tagId]);
         }
@@ -71,7 +74,7 @@ export class RoomListStoreClass extends AsyncStoreWithClient<IState> {
         'advancedRoomListLogging', // TODO: Remove watch: https://github.com/vector-im/element-web/issues/14602
     ];
 
-    constructor() {
+    constructor(enabled = true) {
         super(defaultDispatcher);
 
         this.checkLoggingEnabled();
@@ -80,6 +83,7 @@ export class RoomListStoreClass extends AsyncStoreWithClient<IState> {
         this.algorithm.on(LIST_UPDATED_EVENT, this.onAlgorithmListUpdated);
         this.algorithm.on(FILTER_CHANGED, this.onAlgorithmFilterUpdated);
         this.setupWatchers();
+        this.enabled = enabled;
     }
 
     private setupWatchers() {
@@ -158,6 +162,7 @@ export class RoomListStoreClass extends AsyncStoreWithClient<IState> {
      */
     private async handleRVSUpdate({trigger = true}) {
         if (!this.matrixClient) return; // We assume there won't be RVS updates without a client
+        if (!this.enabled) return;
 
         const activeRoomId = RoomViewStore.getRoomId();
         if (!activeRoomId && this.algorithm.stickyRoom) {
@@ -567,6 +572,7 @@ export class RoomListStoreClass extends AsyncStoreWithClient<IState> {
      */
     public async regenerateAllLists({trigger = true}) {
         console.warn("Regenerating all room lists");
+        if (!this.enabled) return;
 
         const rooms = [
             ...this.matrixClient.getVisibleRooms(),
@@ -662,7 +668,7 @@ export default class RoomListStore {
 
     public static get instance(): RoomListStoreClass {
         if (!RoomListStore.internalInstance) {
-            RoomListStore.internalInstance = new RoomListStoreClass();
+            RoomListStore.internalInstance = new RoomListStoreClass(false); // JEL
         }
 
         return RoomListStore.internalInstance;
