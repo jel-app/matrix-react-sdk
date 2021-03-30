@@ -1699,6 +1699,8 @@ export default class RoomView extends React.Component<IProps, IState> {
         if (!this.state.room) {
             const loading = !this.state.matrixClientIsReady || this.state.roomLoading || this.state.peekLoading;
             if (loading) {
+                if (IS_JEL) return <div />;
+
                 // Assume preview loading if we don't have a ready client or a room ID (still resolving the alias)
                 const previewLoading = !this.state.matrixClientIsReady || !this.state.roomId || this.state.peekLoading;
                 return (
@@ -1750,6 +1752,8 @@ export default class RoomView extends React.Component<IProps, IState> {
         const myMembership = this.state.room.getMyMembership();
         if (myMembership === "invite" && !this.state.room.isSpaceRoom()) { // SpaceRoomView handles invites itself
             if (this.state.joining || this.state.rejecting) {
+                if (IS_JEL) return <div />;
+
                 return (
                     <ErrorBoundary>
                         <RoomPreviewBar
@@ -1768,6 +1772,8 @@ export default class RoomView extends React.Component<IProps, IState> {
                 if (inviteEvent) {
                     inviterName = inviteEvent.sender ? inviteEvent.sender.name : inviteEvent.getSender();
                 }
+
+                if (IS_JEL) return <div />;
 
                 // We deliberately don't try to peek into invites, even if we have permission to peek
                 // as they could be a spam vector.
@@ -1871,6 +1877,8 @@ export default class RoomView extends React.Component<IProps, IState> {
         } else if (myMembership !== "join") {
             // We do have a room object for this room, but we're not currently in it.
             // We may have a 3rd party invite to it.
+            if (IS_JEL) return <div />;
+
             let inviterName = undefined;
             if (this.props.oobData) {
                 inviterName = this.props.oobData.inviterName;

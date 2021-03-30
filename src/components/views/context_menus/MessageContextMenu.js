@@ -37,6 +37,8 @@ function canCancel(eventStatus) {
     return eventStatus === EventStatus.QUEUED || eventStatus === EventStatus.NOT_SENT;
 }
 
+const IS_JEL = window["IS_JEL"];
+
 export default class MessageContextMenu extends React.Component {
     static propTypes = {
         /* the MatrixEvent associated with the context menu */
@@ -460,11 +462,11 @@ export default class MessageContextMenu extends React.Component {
                 { resendRedactionButton }
                 { redactButton }
                 { cancelButton }
-                { forwardButton }
+                { !IS_JEL && forwardButton }
                 { pinButton }
-                { viewSourceButton }
+                { !IS_JEL && viewSourceButton }
                 { unhidePreviewButton }
-                { permalinkButton }
+                { !IS_JEL && permalinkButton }
                 { quoteButton }
                 { externalURLButton }
                 { collapseReplyThread }

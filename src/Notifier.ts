@@ -282,6 +282,8 @@ export const Notifier = {
     },
 
     isAudioEnabled: function() {
+        return false; // JEL, we use push for all sounds
+
         // We don't route Audio via the HTML Notifications API so it is possible regardless of other things
         return SettingsStore.getValue("audioNotificationsEnabled");
     },

@@ -33,6 +33,8 @@ import WidgetStore from "../../../stores/WidgetStore";
 import {UPDATE_EVENT} from "../../../stores/AsyncStore";
 import ActiveWidgetStore from "../../../stores/ActiveWidgetStore";
 
+const IS_JEL = window["IS_JEL"];
+
 function ComposerAvatar(props) {
     const MemberStatusMessageAvatar = sdk.getComponent('avatars.MemberStatusMessageAvatar');
     return <div className="mx_MessageComposer_avatar">
@@ -349,7 +351,7 @@ export default class MessageComposer extends React.Component {
                 <EmojiButton key="emoji_button" addEmoji={this.addEmoji} />,
             );
 
-            if (SettingsStore.getValue(UIFeature.Widgets) &&
+            if (!IS_JEL && SettingsStore.getValue(UIFeature.Widgets) &&
                 SettingsStore.getValue("MessageComposerInput.showStickersButton")) {
                 controls.push(<Stickerpicker key="stickerpicker_controls_button" room={this.props.room} />);
             }

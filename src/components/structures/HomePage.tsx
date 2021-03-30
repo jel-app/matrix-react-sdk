@@ -34,6 +34,8 @@ import MiniAvatarUploader, {AVATAR_SIZE} from "../views/elements/MiniAvatarUploa
 import Analytics from "../../Analytics";
 import CountlyAnalytics from "../../CountlyAnalytics";
 
+const IS_JEL = window["IS_JEL"];
+
 const onClickSendDm = () => {
     Analytics.trackEvent('home_page', 'button', 'dm');
     CountlyAnalytics.instance.track("home_page_button", { button: "dm" });
@@ -92,6 +94,8 @@ const UserWelcomeTop = () => {
 };
 
 const HomePage: React.FC<IProps> = ({ justRegistered = false }) => {
+    if (IS_JEL) return <div />;
+
     const config = SdkConfig.get();
     const pageUrl = getHomePageUrl(config);
 
