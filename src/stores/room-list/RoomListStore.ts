@@ -46,6 +46,7 @@ interface IState {
  * with one argument: the instance of the store.
  */
 export const LISTS_UPDATE_EVENT = "lists_update";
+const IS_JEL = window["IS_JEL"];
 
 export class RoomListStoreClass extends AsyncStoreWithClient<IState> {
     /**
@@ -54,7 +55,7 @@ export class RoomListStoreClass extends AsyncStoreWithClient<IState> {
      */
     public static TEST_MODE = false;
 
-    private enabled = true; // JEL allow disabling, since Jel does not need RoomListStore
+    private enabled = true; // JEL
     private initialListsGenerated = false;
     private algorithm = new Algorithm();
     private filterConditions: IFilterCondition[] = [];
@@ -668,7 +669,7 @@ export default class RoomListStore {
 
     public static get instance(): RoomListStoreClass {
         if (!RoomListStore.internalInstance) {
-            RoomListStore.internalInstance = new RoomListStoreClass(false); // JEL
+            RoomListStore.internalInstance = new RoomListStoreClass(!IS_JEL); // Disable store in Jel UI
         }
 
         return RoomListStore.internalInstance;

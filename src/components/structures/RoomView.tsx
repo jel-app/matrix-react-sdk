@@ -85,6 +85,7 @@ import { IOpts } from "../../createRoom";
 
 const DEBUG = false;
 let debuglog = function(msg: string) {};
+const IS_JEL = window["IS_JEL"];
 
 const BROWSER_SUPPORTS_SANDBOX = 'sandbox' in document.createElement('iframe');
 
@@ -2076,7 +2077,7 @@ export default class RoomView extends React.Component<IProps, IState> {
                         <EffectsOverlay roomWidth={this.roomView.current.offsetWidth} />
                     }
                     <ErrorBoundary>
-                        <RoomHeader
+                        {!IS_JEL && <RoomHeader
                             room={this.state.room}
                             searchInfo={searchInfo}
                             oobData={this.props.oobData}
@@ -2091,7 +2092,7 @@ export default class RoomView extends React.Component<IProps, IState> {
                             onAppsClick={this.state.hasPinnedWidgets ? this.onAppsClick : null}
                             appsShown={this.state.showApps}
                             onCallPlaced={this.onCallPlaced}
-                        />
+                        />}
                         <MainSplit panel={rightPanel} resizeNotifier={this.props.resizeNotifier}>
                             <div className="mx_RoomView_body">
                                 {auxPanel}

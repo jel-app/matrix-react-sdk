@@ -37,6 +37,7 @@ import NewRoomIntro from "../views/rooms/NewRoomIntro";
 
 const CONTINUATION_MAX_INTERVAL = 5 * 60 * 1000; // 5 minutes
 const continuedTypes = ['m.sticker', 'm.room.message'];
+const IS_JEL = window["IS_JEL"];
 
 // check if there is a previous event and it has the same sender as this event
 // and the types are the same/is in continuedTypes and the time between them is <= CONTINUATION_MAX_INTERVAL
@@ -1020,7 +1021,7 @@ class CreationGrouper {
                  summaryMembers={[ev.sender]}
                  summaryText={summaryText}
             >
-                 { eventTiles }
+                 { !IS_JEL && eventTiles }
             </EventListSummary>,
         );
 

@@ -29,6 +29,8 @@ import {ViewUserPayload} from "../../../dispatcher/payloads/ViewUserPayload";
 import {Action} from "../../../dispatcher/actions";
 import dis from "../../../dispatcher/dispatcher";
 
+const IS_JEL = window["IS_JEL"];
+
 const NewRoomIntro = () => {
     const cli = useContext(MatrixClientContext);
     const {room, roomId} = useContext(RoomContext);
@@ -76,28 +78,34 @@ const NewRoomIntro = () => {
         };
 
         let topicText;
-        if (canAddTopic && topic) {
-            topicText = _t("Topic: %(topic)s (<a>edit</a>)", { topic }, {
-                a: sub => <AccessibleButton kind="link" onClick={onTopicClick}>{ sub }</AccessibleButton>,
-            });
-        } else if (topic) {
-            topicText = _t("Topic: %(topic)s ", { topic });
-        } else if (canAddTopic) {
-            topicText = _t("<a>Add a topic</a> to help people know what it is about.", {}, {
-                a: sub => <AccessibleButton kind="link" onClick={onTopicClick}>{ sub }</AccessibleButton>,
-            });
+
+        if (!IS_JEL) {
+            if (canAddTopic && topic) {
+                topicText = _t("Topic: %(topic)s (<a>edit</a>)", { topic }, {
+                    a: sub => <AccessibleButton kind="link" onClick={onTopicClick}>{ sub }</AccessibleButton>,
+                });
+            } else if (topic) {
+                topicText = _t("Topic: %(topic)s ", { topic });
+            } else if (canAddTopic) {
+                topicText = _t("<a>Add a topic</a> to help people know what it is about.", {}, {
+                    a: sub => <AccessibleButton kind="link" onClick={onTopicClick}>{ sub }</AccessibleButton>,
+                });
+            }
         }
 
         const creator = room.currentState.getStateEvents(EventType.RoomCreate, "")?.getSender();
         const creatorName = room?.getMember(creator)?.rawDisplayName || creator;
 
         let createdText;
-        if (creator === cli.getUserId()) {
-            createdText = _t("You created this room.");
-        } else {
-            createdText = _t("%(displayName)s created this room.", {
-                displayName: creatorName,
-            });
+
+        if (!IS_JEL) {
+            if (creator === cli.getUserId()) {
+                createdText = _t("You created this room.");
+            } else {
+                createdText = _t("%(displayName)s created this room.", {
+                    displayName: creatorName,
+                });
+            }
         }
 
         let buttons;
@@ -115,13 +123,13 @@ const NewRoomIntro = () => {
 
         const avatarUrl = room.currentState.getStateEvents(EventType.RoomAvatar, "")?.getContent()?.url;
         body = <React.Fragment>
-            <MiniAvatarUploader
+            {!IS_JEL && <MiniAvatarUploader
                 hasAvatar={!!avatarUrl}
                 noAvatarLabel={_t("Add a photo, so people can easily spot your room.")}
                 setAvatarUrl={url => cli.sendStateEvent(roomId, EventType.RoomAvatar, { url }, '')}
             >
                 <RoomAvatar room={room} width={AVATAR_SIZE} height={AVATAR_SIZE} />
-            </MiniAvatarUploader>
+            </MiniAvatarUploader>}
 
             <h2>{ room.name }</h2>
 

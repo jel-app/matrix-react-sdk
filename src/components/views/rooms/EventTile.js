@@ -41,38 +41,39 @@ import {WIDGET_LAYOUT_EVENT_TYPE} from "../../../stores/widgets/WidgetLayoutStor
 import {objectHasDiff} from "../../../utils/objects";
 import Tooltip from "../elements/Tooltip";
 
+// JEL remove types we don't care about
 const eventTileTypes = {
     'm.room.message': 'messages.MessageEvent',
     'm.sticker': 'messages.MessageEvent',
-    'm.key.verification.cancel': 'messages.MKeyVerificationConclusion',
-    'm.key.verification.done': 'messages.MKeyVerificationConclusion',
-    'm.room.encryption': 'messages.EncryptionEvent',
-    'm.call.invite': 'messages.TextualEvent',
-    'm.call.answer': 'messages.TextualEvent',
-    'm.call.hangup': 'messages.TextualEvent',
-    'm.call.reject': 'messages.TextualEvent',
+    //'m.key.verification.cancel': 'messages.MKeyVerificationConclusion',
+    //'m.key.verification.done': 'messages.MKeyVerificationConclusion',
+    //'m.room.encryption': 'messages.EncryptionEvent',
+    //'m.call.invite': 'messages.TextualEvent',
+    //'m.call.answer': 'messages.TextualEvent',
+    //'m.call.hangup': 'messages.TextualEvent',
+    //'m.call.reject': 'messages.TextualEvent',
 };
 
 const stateEventTileTypes = {
     'm.room.encryption': 'messages.EncryptionEvent',
-    'm.room.canonical_alias': 'messages.TextualEvent',
-    'm.room.create': 'messages.RoomCreate',
-    'm.room.member': 'messages.TextualEvent',
+    //'m.room.canonical_alias': 'messages.TextualEvent',
+    //'m.room.create': 'messages.RoomCreate',
+    //'m.room.member': 'messages.TextualEvent',
     'm.room.name': 'messages.TextualEvent',
-    'm.room.avatar': 'messages.RoomAvatarEvent',
-    'm.room.third_party_invite': 'messages.TextualEvent',
-    'm.room.history_visibility': 'messages.TextualEvent',
+    //'m.room.avatar': 'messages.RoomAvatarEvent',
+    //'m.room.third_party_invite': 'messages.TextualEvent',
+    //'m.room.history_visibility': 'messages.TextualEvent',
     'm.room.topic': 'messages.TextualEvent',
-    'm.room.power_levels': 'messages.TextualEvent',
+    //'m.room.power_levels': 'messages.TextualEvent',
     'm.room.pinned_events': 'messages.TextualEvent',
     'm.room.server_acl': 'messages.TextualEvent',
     // TODO: Enable support for m.widget event type (https://github.com/vector-im/element-web/issues/13111)
-    'im.vector.modular.widgets': 'messages.TextualEvent',
-    [WIDGET_LAYOUT_EVENT_TYPE]: 'messages.TextualEvent',
+    //'im.vector.modular.widgets': 'messages.TextualEvent',
+    //[WIDGET_LAYOUT_EVENT_TYPE]: 'messages.TextualEvent',
     'm.room.tombstone': 'messages.TextualEvent',
-    'm.room.join_rules': 'messages.TextualEvent',
-    'm.room.guest_access': 'messages.TextualEvent',
-    'm.room.related_groups': 'messages.TextualEvent',
+    //'m.room.join_rules': 'messages.TextualEvent',
+    //'m.room.guest_access': 'messages.TextualEvent',
+    //'m.room.related_groups': 'messages.TextualEvent',
 };
 
 // Add all the Mjolnir stuff to the renderer

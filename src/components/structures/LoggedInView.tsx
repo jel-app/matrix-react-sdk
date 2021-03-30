@@ -16,7 +16,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-const ROOM_ONLY = true;
+const IS_JEL = window["IS_JEL"];
 
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
@@ -194,7 +194,7 @@ class LoggedInView extends React.Component<IProps, IState> {
             "useCompactLayout", null, this.onCompactLayoutChanged,
         );
 
-        if (!ROOM_ONLY) {
+        if (!IS_JEL) {
             this.resizer = this._createResizer();
             this.resizer.attach();
             this._loadResizerPreferences();
@@ -450,10 +450,10 @@ class LoggedInView extends React.Component<IProps, IState> {
 
     _onKeyDown = (ev) => {
         let handled = false;
-        const ctrlCmdOnly = isOnlyCtrlOrCmdKeyEvent(ev);
+        //const ctrlCmdOnly = isOnlyCtrlOrCmdKeyEvent(ev);
         const hasModifier = ev.altKey || ev.ctrlKey || ev.metaKey || ev.shiftKey;
         const isModifier = ev.key === Key.ALT || ev.key === Key.CONTROL || ev.key === Key.META || ev.key === Key.SHIFT;
-        const modKey = isMac ? ev.metaKey : ev.ctrlKey;
+        //const modKey = isMac ? ev.metaKey : ev.ctrlKey;
 
         switch (ev.key) {
             case Key.PAGE_UP:
@@ -471,72 +471,76 @@ class LoggedInView extends React.Component<IProps, IState> {
                     handled = true;
                 }
                 break;
-            case Key.K:
-                if (ctrlCmdOnly) {
-                    dis.dispatch({
-                        action: 'focus_room_filter',
-                    });
-                    handled = true;
-                }
-                break;
-            case Key.F:
-                if (ctrlCmdOnly && SettingsStore.getValue("ctrlFForSearch")) {
-                    dis.dispatch({
-                        action: 'focus_search',
-                    });
-                    handled = true;
-                }
-                break;
-            case Key.BACKTICK:
-                // Ideally this would be CTRL+P for "Profile", but that's
-                // taken by the print dialog. CTRL+I for "Information"
-                // was previously chosen but conflicted with italics in
-                // composer, so CTRL+` it is
+            // JEL
+            //case Key.K:
+            //    if (ctrlCmdOnly) {
+            //        dis.dispatch({
+            //            action: 'focus_room_filter',
+            //        });
+            //        handled = true;
+            //    }
+            //    break;
+            // JEL
+            //case Key.F:
+            //    if (ctrlCmdOnly && SettingsStore.getValue("ctrlFForSearch")) {
+            //        dis.dispatch({
+            //            action: 'focus_search',
+            //        });
+            //        handled = true;
+            //    }
+            //    break;
+            // JEL
+            // case Key.BACKTICK:
+            //    // Ideally this would be CTRL+P for "Profile", but that's
+            //    // taken by the print dialog. CTRL+I for "Information"
+            //    // was previously chosen but conflicted with italics in
+            //    // composer, so CTRL+` it is
 
-                if (ctrlCmdOnly) {
-                    dis.fire(Action.ToggleUserMenu);
-                    handled = true;
-                }
-                break;
+            //    if (ctrlCmdOnly) {
+            //        dis.fire(Action.ToggleUserMenu);
+            //        handled = true;
+            //    }
+            //    break;
 
-            case Key.SLASH:
-                if (isOnlyCtrlOrCmdIgnoreShiftKeyEvent(ev)) {
-                    KeyboardShortcuts.toggleDialog();
-                    handled = true;
-                }
-                break;
+            // Jel
+            //case Key.SLASH:
+            //    if (isOnlyCtrlOrCmdIgnoreShiftKeyEvent(ev)) {
+            //        KeyboardShortcuts.toggleDialog();
+            //        handled = true;
+            //    }
+            //    break;
 
-            case Key.H:
-                if (ev.altKey && modKey) {
-                    dis.dispatch({
-                        action: 'view_home_page',
-                    });
-                    Modal.closeCurrentModal("homeKeyboardShortcut");
-                    handled = true;
-                }
-                break;
+            //case Key.H:
+            //    if (ev.altKey && modKey) {
+            //        dis.dispatch({
+            //            action: 'view_home_page',
+            //        });
+            //        Modal.closeCurrentModal("homeKeyboardShortcut");
+            //        handled = true;
+            //    }
+            //    break;
 
-            case Key.ARROW_UP:
-            case Key.ARROW_DOWN:
-                if (ev.altKey && !ev.ctrlKey && !ev.metaKey) {
-                    dis.dispatch<ViewRoomDeltaPayload>({
-                        action: Action.ViewRoomDelta,
-                        delta: ev.key === Key.ARROW_UP ? -1 : 1,
-                        unread: ev.shiftKey,
-                    });
-                    handled = true;
-                }
-                break;
+            //case Key.ARROW_UP:
+            //case Key.ARROW_DOWN:
+            //    if (ev.altKey && !ev.ctrlKey && !ev.metaKey) {
+            //        dis.dispatch<ViewRoomDeltaPayload>({
+            //            action: Action.ViewRoomDelta,
+            //            delta: ev.key === Key.ARROW_UP ? -1 : 1,
+            //            unread: ev.shiftKey,
+            //        });
+            //        handled = true;
+            //    }
+            //    break;
 
-            case Key.PERIOD:
-                if (ctrlCmdOnly && (this.props.page_type === "room_view" || this.props.page_type === "group_view")) {
-                    dis.dispatch<ToggleRightPanelPayload>({
-                        action: Action.ToggleRightPanel,
-                        type: this.props.page_type === "room_view" ? "room" : "group",
-                    });
-                    handled = true;
-                }
-                break;
+            //case Key.PERIOD:
+            //    if (ctrlCmdOnly && (this.props.page_type === "room_view" || this.props.page_type === "group_view")) {
+            //        dis.dispatch<ToggleRightPanelPayload>({
+            //            action: Action.ToggleRightPanel,
+            //            type: this.props.page_type === "room_view" ? "room" : "group",
+            //        });
+            //        handled = true;
+            //    }
+            //    break;
 
             default:
                 // if we do not have a handler for it, pass it to the platform which might
@@ -690,9 +694,9 @@ class LoggedInView extends React.Component<IProps, IState> {
                     className='mx_MatrixChat_wrapper'
                     aria-hidden={this.props.hideToSRUsers}
                 >
-                    { !ROOM_ONLY && <ToastContainer />}
+                    { !IS_JEL && <ToastContainer />}
                     <DragDropContext onDragEnd={this._onDragEnd}>
-                        { ROOM_ONLY ?
+                        { IS_JEL ?
                             (<div className={bodyClasses}>
                                 { pageElement }
                             </div>)
@@ -705,9 +709,9 @@ class LoggedInView extends React.Component<IProps, IState> {
                         }
                     </DragDropContext>
                 </div>
-                { !ROOM_ONLY && <CallContainer />}
-                { !ROOM_ONLY && <NonUrgentToastContainer />}
-                { !ROOM_ONLY && <HostSignupContainer />}
+                { !IS_JEL && <CallContainer />}
+                { !IS_JEL && <NonUrgentToastContainer />}
+                { !IS_JEL && <HostSignupContainer />}
             </MatrixClientContext.Provider>
         );
     }
