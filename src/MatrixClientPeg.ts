@@ -36,6 +36,8 @@ import { crossSigningCallbacks, tryToUnlockSecretStorageWithDehydrationKey } fro
 import {SHOW_QR_CODE_METHOD} from "matrix-js-sdk/src/crypto/verification/QRCode";
 import SecurityCustomisations from "./customisations/Security";
 
+const IS_JEL = window["IS_JEL"];
+
 export interface IMatrixClientCreds {
     homeserverUrl: string;
     identityServerUrl: string;
@@ -208,7 +210,7 @@ class _MatrixClientPeg implements IMatrixClientPeg {
         // try to initialise e2e on the new client
         try {
             // check that we have a version of the js-sdk which includes initCrypto
-            if (!SettingsStore.getValue("lowBandwidth") && this.matrixClient.initCrypto) {
+            if (!IS_JEL && !SettingsStore.getValue("lowBandwidth") && this.matrixClient.initCrypto) {
                 await this.matrixClient.initCrypto();
                 this.matrixClient.setCryptoTrustCrossSignedDevices(
                     !SettingsStore.getValue('e2ee.manuallyVerifyAllSessions'),
