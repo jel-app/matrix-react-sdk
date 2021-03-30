@@ -85,6 +85,8 @@ import { showToast as showMobileGuideToast } from '../../toasts/MobileGuideToast
 import SpaceStore from "../../stores/SpaceStore";
 import SpaceRoomDirectory from "./SpaceRoomDirectory";
 
+const IS_JEL = window["IS_JEL"];
+
 /** constants for MatrixChat.state.view */
 export enum Views {
     // a special initial state which is only used at startup, while we are
@@ -1302,12 +1304,13 @@ export default class MatrixChat extends React.PureComponent<IProps, IState> {
      */
     private onLoggedOut() {
         this.notifyNewScreen('login');
-        this.setStateForNewView({
-            view: Views.LOGIN,
-            ready: false,
-            collapseLhs: false,
-            currentRoomId: null,
-        });
+    // Login screen shouldn't be seen when signing out
+    this.setStateForNewView({
+        view: IS_JEL ? Views.WELCOME : Views.LOGIN,
+        ready: false,
+        collapseLhs: false,
+        currentRoomId: null,
+    });
         this.subTitleStatus = '';
         this.setPageSubtitle();
         ThemeController.isLogin = true;
