@@ -96,6 +96,12 @@ class EmojiPicker extends React.Component<IProps, IState> {
             visible: false,
             ref: React.createRef(),
         }, {
+            id: "symbols",
+            name: _t("Symbols"),
+            enabled: true,
+            visible: false,
+            ref: React.createRef(),
+        }, {
             id: "activity",
             name: _t("Activities"),
             enabled: true,
@@ -110,12 +116,6 @@ class EmojiPicker extends React.Component<IProps, IState> {
         }, {
             id: "objects",
             name: _t("Objects"),
-            enabled: true,
-            visible: false,
-            ref: React.createRef(),
-        }, {
-            id: "symbols",
-            name: _t("Symbols"),
             enabled: true,
             visible: false,
             ref: React.createRef(),
@@ -226,8 +226,8 @@ class EmojiPicker extends React.Component<IProps, IState> {
         let heightBefore = 0;
         return (
             <div className="mx_EmojiPicker">
-                <Header categories={this.categories} onAnchorClick={this.scrollToCategory} />
                 <Search query={this.state.filter} onChange={this.onChangeFilter} onEnter={this.onEnterFilter} />
+                <Header categories={this.categories} onAnchorClick={this.scrollToCategory} />
                 <AutoHideScrollbar
                     className="mx_EmojiPicker_body"
                     wrappedRef={ref => {

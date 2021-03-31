@@ -61,6 +61,24 @@ $font-400px: 40rem;
 $font-family: lato, twemoji, roboto, helvetica, arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 $monospace-font-family: inconsolata, monospace;
 
+// Lifted from jel theme
+$menu-selected-color: $primary-4;
+$menu-border-color: $primary-4;
+$menu-item-text-color: $primary-11;
+$menu-item-text-size: $text-4-size;
+$menu-item-hover-background-color: $primary-5;
+$menu-item-active-color: $primary-10;
+$menu-item-active-background-color: $primary-4;
+
+$panel-background-color: $primary-1;
+$text-input-background-color: $neutral-11;
+$dialog-info-text-color: $primary-9;
+$panel-text-color: $primary-9;
+$panel-item-hover-background-color: $primary-3;
+$panel-item-active-background-color: $primary-5;
+$canvas-overlay-item-hover-background-color: $primary-4-transparent;
+$canvas-overlay-item-active-background-color: $primary-3-transparent;
+
 // unified palette
 // try to use these colors when possible
 $accent-color: $primary-6;
@@ -85,8 +103,8 @@ $focus-bg-color: #dddddd;
 // button UI (white-on-green in light skin)
 $accent-fg-color: #ffffff;
 $accent-color-50pct: rgba($accent-color, 0.5);
-$accent-color-darker: #92caad;
-$accent-color-alt: #238cf5;
+$accent-color-darker: $primary-5;
+$accent-color-alt: $primary-4;
 
 $selection-fg-color: $primary-bg-color;
 
@@ -155,13 +173,6 @@ $menu-border-color: $primary-4;
 $menu-fg-color: $primary-11;
 $menu-bg-color: $primary-3;
 $menu-box-shadow-color: #{$neutral-1}cc;
-$menu-selected-color: $primary-4;
-$menu-border-color: $primary-4;
-$menu-item-text-color: $primary-11;
-$menu-item-text-size: $text-4-size;
-$menu-item-hover-background-color: $primary-5;
-$menu-item-active-color: $primary-10;
-$menu-item-active-background-color: $primary-4;
 
 $avatar-initial-color: #ffffff;
 $avatar-bg-color: $primary-bg-color;

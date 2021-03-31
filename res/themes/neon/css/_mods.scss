@@ -50,6 +50,14 @@ a:visited {
 
 .mx_EmojiPicker_item {
     font-size: $font-26px;
+
+    &:hover {
+        background-color: $canvas-overlay-item-hover-background-color;
+    }
+
+    &:active {
+        background-color: $canvas-overlay-item-active-background-color;
+    }
 }
 
 .mx_EmojiPicker_preview_emoji {
@@ -79,7 +87,6 @@ a:visited {
 
 .mx_ContextualMenu {
     color: $menu-fg-color;
-    padding: 4px 0;
     border-radius: 3px;
     border: 1px solid $menu-border-color;
     box-shadow: 0px 12px 28px $menu-box-shadow-color;
@@ -87,7 +94,7 @@ a:visited {
 
 .mx_MessageContextMenu {
     width: 192px;
-    padding: 0;
+    padding: 4px 0;
 }
 
 .mx_MessageContextMenu_field {
@@ -109,4 +116,62 @@ a:visited {
         color: $menu-item-active-color;
         background-color: $menu-item-active-background-color;
     }
+}
+
+.mx_EmojiPicker {
+    background-color: $panel-background-color;
+    padding: 0;
+}
+
+.mx_EmojiPicker_body {
+    background-color: $text-input-background-color;
+    padding: 8px 0;
+}
+
+.mx_EmojiPicker_anchor::before {
+    background-color: $dialog-info-text-color;
+}
+
+.mx_EmojiPicker_anchor {
+    border-radius: 2px;
+
+    &:not(:disabled):hover {
+        border-bottom: 2px solid transparent;
+        background-color: $panel-item-hover-background-color;
+    }
+
+    &:not(:disabled):active {
+        border-bottom: 2px solid transparent;
+        background-color: $panel-item-active-background-color;
+    }
+}
+
+.mx_EmojiPicker_anchor_visible {
+    border-bottom: 2px solid transparent;
+    background-color: $panel-item-active-background-color;
+}
+
+.mx_EmojiPicker_header {
+    border: none;
+    padding: 4px 8px;
+}
+
+.mx_EmojiPicker_footer {
+    padding: 8px 12px;
+    .mx_EmojiPicker_category_label {
+        color: $panel-text-color;
+    }
+    .mx_EmojiPicker_item {
+        &:hover {
+            background-color: $panel-item-hover-background-color;
+        }
+
+        &:active {
+            background-color: $panel-item-active-background-color;
+        }
+    }
+}
+
+.mx_EmojiPicker_shortcode {
+    color: $primary-8;
 }
