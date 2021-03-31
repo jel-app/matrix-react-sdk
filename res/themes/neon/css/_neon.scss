@@ -127,8 +127,8 @@ $info-plinth-fg-color: #888;
 $preview-bar-bg-color: #f7f7f7;
 
 // left-panel style muted accent color
-$secondary-accent-color: #f2f5f8;
-$tertiary-accent-color: #d3efe1;
+$secondary-accent-color: $primary-10;
+$tertiary-accent-color: $primary-9;
 
 $groupFilterPanel-bg-color: rgba(232, 232, 232, 0.77);
 
@@ -145,16 +145,16 @@ $event-selected-color: $primary-11;
 $primary-hairline-color: transparent;
 
 // used for the border of input text fields
-$input-border-color: #e7e7e7;
+$input-border-color: $neutral-10;
 $input-darker-bg-color: #e3e8f0;
 $input-darker-fg-color: #9fa9ba;
 $input-lighter-bg-color: #f2f5f8;
 $input-lighter-fg-color: $input-darker-fg-color;
-$input-focused-border-color: #238cf5;
+$input-focused-border-color: $primary-9;
 $input-valid-border-color: $primary-8;
 $input-invalid-border-color: $warning-color;
 
-$field-focused-label-bg-color: #ffffff;
+$field-focused-label-bg-color: $primary-bg-color;
 
 $button-bg-color: $accent-color;
 $button-fg-color: white;
@@ -174,7 +174,7 @@ $menu-fg-color: $primary-11;
 $menu-bg-color: $primary-3;
 $menu-box-shadow-color: #{$neutral-1}cc;
 
-$avatar-initial-color: #ffffff;
+$avatar-initial-color: $primary-bg-color;
 $avatar-bg-color: $primary-bg-color;
 
 $h3-color: #3d3b39;
@@ -324,14 +324,14 @@ $tab-label-icon-bg-color: #454545;
 $tab-label-active-icon-bg-color: $tab-label-active-fg-color;
 
 // Buttons
-$button-primary-fg-color: #ffffff;
-$button-primary-bg-color: $accent-color;
-$button-secondary-bg-color: $accent-fg-color;
-$button-danger-fg-color: #ffffff;
+$button-primary-fg-color: $primary-10;
+$button-primary-bg-color: $primary-6;
+$button-secondary-bg-color: transparent;
+$button-danger-fg-color: $neutral-11;
 $button-danger-bg-color: $notice-primary-color;
 $button-danger-disabled-fg-color: #ffffff;
 $button-danger-disabled-bg-color: #f5b6bb; // TODO: Verify color
-$button-link-fg-color: $accent-color;
+$button-link-fg-color: $primary-6;
 $button-link-bg-color: transparent;
 
 $visual-bell-bg-color: #faa;

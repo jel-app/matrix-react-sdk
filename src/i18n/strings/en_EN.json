@@ -2048,7 +2048,7 @@
     "You cannot delete this message. (%(code)s)": "You cannot delete this message. (%(code)s)",
     "Removing…": "Removing…",
     "Confirm Removal": "Confirm Removal",
-    "Are you sure you wish to remove (delete) this event? Note that if you delete a room name or topic change, it could undo the change.": "Are you sure you wish to remove (delete) this event? Note that if you delete a channel name or topic change, it could undo the change.",
+    "Are you sure you wish to remove (delete) this event? Note that if you delete a room name or topic change, it could undo the change.": "Are you sure you wish to remove this message?",
     "Reason (optional)": "Reason (optional)",
     "Clear all data in this session?": "Clear all data in this session?",
     "Clearing all data from this session is permanent. Encrypted messages will be lost unless their keys have been backed up.": "Clearing all data from this session is permanent. Encrypted messages will be lost unless their keys have been backed up.",

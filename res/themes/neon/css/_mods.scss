@@ -175,3 +175,15 @@ a:visited {
 .mx_EmojiPicker_shortcode {
     color: $primary-8;
 }
+
+.mx_AccessibleButton_kind_primary_outline {
+    border: none;
+}
+
+.mx_Dialog button {
+    border-radius: 6px;
+}
+
+.mx_AccessibleButton_hasKind {
+    border-radius: 6px;
+}
