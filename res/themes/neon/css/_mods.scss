@@ -34,3 +34,79 @@ a:link,
 a:visited {
     text-decoration: none;
 }
+
+.mx_Pill {
+    padding: 2px 12px 2px 8px;
+    line-height: calc($font-16px + 8px);
+    vertical-align: inherit;
+}
+
+.mx_EventTile_highlight .mx_EventTile_content .markdown-body a.mx_UserPill_me,
+.mx_EventTile_content .markdown-body a.mx_AtRoomPill,
+.mx_EventTile_content .mx_AtRoomPill,
+.mx_MessageComposer_input .mx_AtRoomPill {
+    color: $mention-user-pill-fg-color;
+}
+
+.mx_EmojiPicker_item {
+    font-size: $font-26px;
+}
+
+.mx_EmojiPicker_preview_emoji {
+    font-size: $font-26px;
+}
+
+.mx_EventTile_content .markdown-body {
+    font-size: $font-16px;
+}
+
+.mx_MessageComposer_input {
+    font-size: $font-16px;
+}
+
+.mx_MessageComposer_input textarea {
+    font-size: $font-16px;
+}
+
+.mx_SendMessageComposer {
+    font-size: $font-16px;
+}
+
+.mx_Tooltip {
+    border-radius: 4px;
+    padding: 8px;
+}
+
+.mx_ContextualMenu {
+    color: $menu-fg-color;
+    padding: 4px 0;
+    border-radius: 3px;
+    border: 1px solid $menu-border-color;
+    box-shadow: 0px 12px 28px $menu-box-shadow-color;
+}
+
+.mx_MessageContextMenu {
+    width: 192px;
+    padding: 0;
+}
+
+.mx_MessageContextMenu_field {
+    padding: 0px 10px;
+    color: $menu-item-text-color;
+    font-size: $menu-item-text-size;
+    text-align: left;
+    border-radius: 3px;
+    height: 32px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+        background-color: $menu-item-hover-background-color;
+    }
+
+    &:active {
+        color: $menu-item-active-color;
+        background-color: $menu-item-active-background-color;
+    }
+}

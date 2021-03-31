@@ -1,109 +1,20 @@
-$primary-sub0: #050e2e;
-$primary-0: #061139;
-$primary-1: #111749;
-$primary-2: #19216c;
-$primary-3: #2d3a8c;
-$primary-4: #35469c;
-$primary-5: #4055a8;
-$primary-6: #4c63b6;
-$primary-7: #647acb;
-$primary-8: #7b93db;
-$primary-9: #98aeeb;
-$primary-10: #bed0f7;
-$primary-11: #e0e8f9;
-$primary-12: #ffffff;
-
-$neutral-1: #0f1923;
-$neutral-2: #1f2933;
-$neutral-3: #323f4b;
-$neutral-4: #3e4c59;
-$neutral-5: #52606d;
-$neutral-6: #616e7c;
-$neutral-7: #7b8794;
-$neutral-8: #9aa5b1;
-$neutral-9: #cbd2d9;
-$neutral-10: #e4e7eb;
-$neutral-11: #f5f7fa;
-
-$accent-1-1: #035388;
-$accent-1-2: #0b69a3;
-$accent-1-3: #127fbf;
-$accent-1-4: #1992d4;
-$accent-1-5: #2bb0ed;
-$accent-1-6: #40c3f7;
-$accent-1-7: #5ed0fa;
-$accent-1-8: #81defd;
-$accent-1-9: #b3ecff;
-$accent-1-10: #e3f8ff;
-
-$accent-2-1: #841003;
-$accent-2-2: #ad1d07;
-$accent-2-3: #c52507;
-$accent-2-4: #de3a11;
-$accent-2-5: #f35627;
-$accent-2-6: #f9703e;
-$accent-2-7: #ff9466;
-$accent-2-8: #ffb088;
-$accent-2-9: #ffd0b5;
-$accent-2-10: #ffe8d9;
-
-$accent-3-1: #610316;
-$accent-3-2: #8a041a;
-$accent-3-3: #ab091e;
-$accent-3-4: #cf1124;
-$accent-3-5: #e12d39;
-$accent-3-6: #ef4e4e;
-$accent-3-7: #f86a6a;
-$accent-3-8: #ff9b9b;
-$accent-3-9: #ffbdbd;
-$accent-3-10: #ffe3e3;
-
-$accent-4-1: #014d40;
-$accent-4-2: #0c6b58;
-$accent-4-3: #147d64;
-$accent-4-4: #199473;
-$accent-4-5: #27ab83;
-$accent-4-6: #3ebd93;
-$accent-4-7: #64d6ad;
-$accent-4-8: #8eedc7;
-$accent-4-9: #c6f7e2;
-$accent-4-10: #effcf6;
-
-$text-1-size: 12px;
-$text-2-size: 14px;
-$text-3-size: 16px;
-$text-4-size: 18px;
-$text-5-size: 20px;
-$text-6-size: 24px;
-$text-7-size: 30px;
-$text-8-size: 36px;
-$text-9-size: 48px;
-$text-10-size: 60px;
-$text-11-size: 72px;
-
-$text-1-weight: 400;
-$text-2-weight: 700;
-$text-3-weight: 900;
-
 $font-8px: 0.8rem; // Right panel
 $font-9px: 0.9rem; // Message composer format bar tooltip
 $font-10px: 1.0rem; // Message composer format bar
 $font-10-4px: 1.04rem; // Message pill avatar pseudo element
 $font-11px: 1.1rem; // Image view size
-$font-12px: 1.2rem; // General tooltips
-$font-13px: 1.3rem; // Message composer button tooltip
-$font-14px: 1.4rem; // Message composer input
-$font-15px: 1.5rem; // Rich text tile line height
-$font-16px: $text-3-size;
-$font-17px: 1.7rem; // Rich text pill line height
-$font-18px: 1.8rem; // Image view name
-$font-20px: 2.0rem; // Emoji picker item, event list summary title
+$font-12px: $text-2-size; // General tooltips
+$font-13px: $text-2-size; // Message composer button tooltip
+$font-14px: $text-2-size; // Entity tile name
+$font-15px: calc($text-2-size + 1px); // Rich text tile line height
+$font-16px: $text-3-size; // Send Message composer
+$font-18px: $text-4-size; // Image view name
+$font-20px: $text-5-size; // event list summary title
 $font-21px: 2.1rem; // Reactions row button height
 $font-22px: 2.2rem; // Event list summary line height
 $font-24px: 2.4rem; // New room intro h2
-$font-26px: 2.6rem; // Address tile line height
+$font-26px: 26px; // Emoji size
 $font-30px: 3.0rem; // Event list summary line line height
-$font-32px: 3.2rem; // Emoji picker preview emoji size
 $font-34px: 3.4rem; // Autocompete pill line height
 $font-40px: 4.0rem; // Room status bar compact tyyping bar line height
 $font-50px: 5.0rem; // Room status bar typing bar line height
@@ -117,6 +28,7 @@ $font-4px: 0.4rem;
 $font-5px: 0.5rem;
 $font-6px: 0.6rem;
 $font-7px: 0.7rem;
+$font-17px: 1.7rem; // Rich text pill line height
 $font-19px: 1.9rem;
 $font-23px: 2.3rem;
 $font-25px: 2.5rem;
@@ -124,6 +36,7 @@ $font-27px: 2.7rem;
 $font-28px: 2.8rem;
 $font-29px: 2.9rem;
 $font-31px: 3.1rem;
+$font-32px: 3.2rem;
 $font-33px: 3.3rem;
 $font-35px: 3.5rem;
 $font-36px: 3.6rem;
@@ -145,25 +58,16 @@ $font-78px: 7.8rem;
 $font-88px: 8.8rem;
 $font-400px: 40rem;
 
-$small-text-size: $text-3-size;
-$small-text-weight: $text-1-weight;
-$small-text-semi-bold-weight: $text-2-weight;
-$small-text-bold-weight: $text-3-weight;
-
-$xsmall-text-size: $text-1-size;
-$xsmall-text-weight: $text-1-weight;
-$xsmall-text-bold-weight: $text-2-weight;
-
-$font-family: lato, roboto, helvetica, arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$font-family: lato, twemoji, roboto, helvetica, arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 $monospace-font-family: inconsolata, monospace;
 
 // unified palette
 // try to use these colors when possible
-$accent-color: #0dbd8b;
-$accent-bg-color: rgba(3, 179, 129, 0.16);
-$notice-primary-color: #ff4b55;
-$notice-primary-bg-color: rgba(255, 75, 85, 0.16);
-$primary-fg-color: #2e2f32;
+$accent-color: $primary-6;
+$accent-bg-color: $primary-6;
+$notice-primary-color: $neutral-11;
+$notice-primary-bg-color: $accent-4-5;
+$primary-fg-color: $neutral-1;
 $secondary-fg-color: #737d8c;
 $tertiary-fg-color: #8d99a5;
 $header-panel-bg-color: #f3f8fd;
@@ -194,8 +98,9 @@ $orange-warning-color: #ff8d13; // used for true warnings
 // background colour for warnings
 $warning-bg-color: #df2a8b;
 $info-bg-color: #2a9edf;
-$mention-user-pill-bg-color: $warning-color;
-$other-user-pill-bg-color: rgba(0, 0, 0, 0.1);
+$mention-user-pill-fg-color: $neutral-11;
+$mention-user-pill-bg-color: $primary-5;
+$other-user-pill-bg-color: $primary-10;
 
 // informational plinth
 $info-plinth-bg-color: #f7f7f7;
@@ -216,7 +121,7 @@ $plinth-bg-color: $secondary-accent-color;
 $selected-color: $secondary-accent-color;
 
 // selected for hoverover & selected event tiles
-$event-selected-color: #f6f7f8;
+$event-selected-color: $primary-11;
 
 // used for the hairline dividers in RoomView
 $primary-hairline-color: transparent;
@@ -228,7 +133,7 @@ $input-darker-fg-color: #9fa9ba;
 $input-lighter-bg-color: #f2f5f8;
 $input-lighter-fg-color: $input-darker-fg-color;
 $input-focused-border-color: #238cf5;
-$input-valid-border-color: $accent-color;
+$input-valid-border-color: $primary-8;
 $input-invalid-border-color: $warning-color;
 
 $field-focused-label-bg-color: #ffffff;
@@ -246,13 +151,20 @@ $input-fg-color: rgba(74, 74, 74, 0.9);
 $scrollbar-thumb-color: rgba(0, 0, 0, 0.2);
 $scrollbar-track-color: transparent;
 // context menus
-$menu-border-color: #e7e7e7;
-$menu-bg-color: #fff;
-$menu-box-shadow-color: rgba(118, 131, 156, 0.6);
-$menu-selected-color: #f5f8fa;
+$menu-border-color: $primary-4;
+$menu-fg-color: $primary-11;
+$menu-bg-color: $primary-3;
+$menu-box-shadow-color: #{$neutral-1}cc;
+$menu-selected-color: $primary-4;
+$menu-border-color: $primary-4;
+$menu-item-text-color: $primary-11;
+$menu-item-text-size: $text-4-size;
+$menu-item-hover-background-color: $primary-5;
+$menu-item-active-color: $primary-10;
+$menu-item-active-background-color: $primary-4;
 
 $avatar-initial-color: #ffffff;
-$avatar-bg-color: #ffffff;
+$avatar-bg-color: $primary-bg-color;
 
 $h3-color: #3d3b39;
 
@@ -335,14 +247,14 @@ $presence-offline: #e3e8f0;
 
 // ********************
 
-$username-variant1-color: #368bd6;
-$username-variant2-color: #ac3ba8;
-$username-variant3-color: #0dbd8b;
-$username-variant4-color: #e64f7a;
-$username-variant5-color: #ff812d;
-$username-variant6-color: #2dc2c5;
-$username-variant7-color: #5c56f5;
-$username-variant8-color: #74d12c;
+$username-variant1-color: $neutral-1;
+$username-variant2-color: $neutral-1;
+$username-variant3-color: $neutral-1;
+$username-variant4-color: $neutral-1;
+$username-variant5-color: $neutral-1;
+$username-variant6-color: $neutral-1;
+$username-variant7-color: $neutral-1;
+$username-variant8-color: $neutral-1;
 
 $notice-secondary-color: $roomlist-header-color;
 
@@ -367,8 +279,8 @@ $yellow-background: #fff8e3;
 // event tile lifecycle
 $event-notsent-color: #f44;
 
-$event-highlight-fg-color: $warning-color;
-$event-highlight-bg-color: $yellow-background;
+$event-highlight-fg-color: $primary-2;
+$event-highlight-bg-color: $primary-10b;
 
 // event redaction
 $event-redacted-fg-color: #e2e2e2;
@@ -445,11 +357,11 @@ $message-action-bar-fg-color: $primary-fg-color;
 $message-action-bar-border-color: #e9edf1;
 $message-action-bar-hover-border-color: $focus-bg-color;
 
-$reaction-row-button-bg-color: $header-panel-bg-color;
-$reaction-row-button-border-color: #e9edf1;
-$reaction-row-button-hover-border-color: $focus-bg-color;
-$reaction-row-button-selected-bg-color: #e9fff9;
-$reaction-row-button-selected-border-color: $accent-color;
+$reaction-row-button-bg-color: $primary-10;
+$reaction-row-button-border-color: $primary-8;
+$reaction-row-button-hover-border-color: $primary-9;
+$reaction-row-button-selected-bg-color: $primary-11;
+$reaction-row-button-selected-border-color: $primary-8;
 
 $kbd-border-color: $reaction-row-button-border-color;
 
