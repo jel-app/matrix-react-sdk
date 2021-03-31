@@ -1304,13 +1304,13 @@ export default class MatrixChat extends React.PureComponent<IProps, IState> {
      */
     private onLoggedOut() {
         this.notifyNewScreen('login');
-    // Login screen shouldn't be seen when signing out
-    this.setStateForNewView({
-        view: IS_JEL ? Views.WELCOME : Views.LOGIN,
-        ready: false,
-        collapseLhs: false,
-        currentRoomId: null,
-    });
+        // Login screen shouldn't be seen when signing out
+        this.setStateForNewView({
+            view: IS_JEL ? Views.WELCOME : Views.LOGIN,
+            ready: false,
+            collapseLhs: false,
+            currentRoomId: null,
+        });
         this.subTitleStatus = '';
         this.setPageSubtitle();
         ThemeController.isLogin = true;
