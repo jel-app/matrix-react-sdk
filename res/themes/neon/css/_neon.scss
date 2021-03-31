@@ -1,30 +1,175 @@
-// XXX: check this?
-/* Nunito lacks combining diacritics, so these will fall through
-   to the next font.  Helevetica's diacritics however do not combine
-   nicely (on OSX, at least) and result in a huge horizontal mess.
-   Arial empirically gets it right, hence prioritising Arial here. */
-/* We fall through to Twemoji for emoji rather than falling through
-   to native Emoji fonts (if any) to ensure cross-browser consistency */
-/* Noto Color Emoji contains digits, in fixed-width, therefore causing
-   digits in flowed text to stand out.
-   TODO: Consider putting all emoji fonts to the end rather than the front. */
-$font-family: Inter, Twemoji, 'Apple Color Emoji', 'Segoe UI Emoji', Arial, Helvetica, Sans-Serif, 'Noto Color Emoji';
+$primary-sub0: #050e2e;
+$primary-0: #061139;
+$primary-1: #111749;
+$primary-2: #19216c;
+$primary-3: #2d3a8c;
+$primary-4: #35469c;
+$primary-5: #4055a8;
+$primary-6: #4c63b6;
+$primary-7: #647acb;
+$primary-8: #7b93db;
+$primary-9: #98aeeb;
+$primary-10: #bed0f7;
+$primary-11: #e0e8f9;
+$primary-12: #ffffff;
 
-$monospace-font-family: Inconsolata, Twemoji, 'Apple Color Emoji', 'Segoe UI Emoji', Courier, monospace, 'Noto Color Emoji';
+$neutral-1: #0f1923;
+$neutral-2: #1f2933;
+$neutral-3: #323f4b;
+$neutral-4: #3e4c59;
+$neutral-5: #52606d;
+$neutral-6: #616e7c;
+$neutral-7: #7b8794;
+$neutral-8: #9aa5b1;
+$neutral-9: #cbd2d9;
+$neutral-10: #e4e7eb;
+$neutral-11: #f5f7fa;
+
+$accent-1-1: #035388;
+$accent-1-2: #0b69a3;
+$accent-1-3: #127fbf;
+$accent-1-4: #1992d4;
+$accent-1-5: #2bb0ed;
+$accent-1-6: #40c3f7;
+$accent-1-7: #5ed0fa;
+$accent-1-8: #81defd;
+$accent-1-9: #b3ecff;
+$accent-1-10: #e3f8ff;
+
+$accent-2-1: #841003;
+$accent-2-2: #ad1d07;
+$accent-2-3: #c52507;
+$accent-2-4: #de3a11;
+$accent-2-5: #f35627;
+$accent-2-6: #f9703e;
+$accent-2-7: #ff9466;
+$accent-2-8: #ffb088;
+$accent-2-9: #ffd0b5;
+$accent-2-10: #ffe8d9;
+
+$accent-3-1: #610316;
+$accent-3-2: #8a041a;
+$accent-3-3: #ab091e;
+$accent-3-4: #cf1124;
+$accent-3-5: #e12d39;
+$accent-3-6: #ef4e4e;
+$accent-3-7: #f86a6a;
+$accent-3-8: #ff9b9b;
+$accent-3-9: #ffbdbd;
+$accent-3-10: #ffe3e3;
+
+$accent-4-1: #014d40;
+$accent-4-2: #0c6b58;
+$accent-4-3: #147d64;
+$accent-4-4: #199473;
+$accent-4-5: #27ab83;
+$accent-4-6: #3ebd93;
+$accent-4-7: #64d6ad;
+$accent-4-8: #8eedc7;
+$accent-4-9: #c6f7e2;
+$accent-4-10: #effcf6;
+
+$text-1-size: 12px;
+$text-2-size: 14px;
+$text-3-size: 16px;
+$text-4-size: 18px;
+$text-5-size: 20px;
+$text-6-size: 24px;
+$text-7-size: 30px;
+$text-8-size: 36px;
+$text-9-size: 48px;
+$text-10-size: 60px;
+$text-11-size: 72px;
+
+$text-1-weight: 400;
+$text-2-weight: 700;
+$text-3-weight: 900;
+
+$font-8px: 0.8rem; // Right panel
+$font-9px: 0.9rem; // Message composer format bar tooltip
+$font-10px: 1.0rem; // Message composer format bar
+$font-10-4px: 1.04rem; // Message pill avatar pseudo element
+$font-11px: 1.1rem; // Image view size
+$font-12px: 1.2rem; // General tooltips
+$font-13px: 1.3rem; // Message composer button tooltip
+$font-14px: 1.4rem; // Message composer input
+$font-15px: 1.5rem; // Rich text tile line height
+$font-16px: $text-3-size;
+$font-17px: 1.7rem; // Rich text pill line height
+$font-18px: 1.8rem; // Image view name
+$font-20px: 2.0rem; // Emoji picker item, event list summary title
+$font-21px: 2.1rem; // Reactions row button height
+$font-22px: 2.2rem; // Event list summary line height
+$font-24px: 2.4rem; // New room intro h2
+$font-26px: 2.6rem; // Address tile line height
+$font-30px: 3.0rem; // Event list summary line line height
+$font-32px: 3.2rem; // Emoji picker preview emoji size
+$font-34px: 3.4rem; // Autocompete pill line height
+$font-40px: 4.0rem; // Room status bar compact tyyping bar line height
+$font-50px: 5.0rem; // Room status bar typing bar line height
+
+// Unused by neon
+$font-1px: 0.1rem;
+$font-1-5px: 0.15rem;
+$font-2px: 0.2rem;
+$font-3px: 0.3rem;
+$font-4px: 0.4rem;
+$font-5px: 0.5rem;
+$font-6px: 0.6rem;
+$font-7px: 0.7rem;
+$font-19px: 1.9rem;
+$font-23px: 2.3rem;
+$font-25px: 2.5rem;
+$font-27px: 2.7rem;
+$font-28px: 2.8rem;
+$font-29px: 2.9rem;
+$font-31px: 3.1rem;
+$font-33px: 3.3rem;
+$font-35px: 3.5rem;
+$font-36px: 3.6rem;
+$font-37px: 3.7rem;
+$font-38px: 3.8rem;
+$font-39px: 3.9rem;
+$font-41px: 4.1rem;
+$font-42px: 4.2rem;
+$font-43px: 4.3rem;
+$font-44px: 4.4rem;
+$font-45px: 4.5rem;
+$font-46px: 4.6rem;
+$font-47px: 4.7rem;
+$font-48px: 4.8rem;
+$font-49px: 4.9rem;
+$font-51px: 5.1rem;
+$font-52px: 5.2rem;
+$font-78px: 7.8rem;
+$font-88px: 8.8rem;
+$font-400px: 40rem;
+
+$small-text-size: $text-3-size;
+$small-text-weight: $text-1-weight;
+$small-text-semi-bold-weight: $text-2-weight;
+$small-text-bold-weight: $text-3-weight;
+
+$xsmall-text-size: $text-1-size;
+$xsmall-text-weight: $text-1-weight;
+$xsmall-text-bold-weight: $text-2-weight;
+
+$font-family: lato, roboto, helvetica, arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$monospace-font-family: inconsolata, monospace;
 
 // unified palette
 // try to use these colors when possible
-$accent-color: #0DBD8B;
+$accent-color: #0dbd8b;
 $accent-bg-color: rgba(3, 179, 129, 0.16);
 $notice-primary-color: #ff4b55;
 $notice-primary-bg-color: rgba(255, 75, 85, 0.16);
 $primary-fg-color: #2e2f32;
-$secondary-fg-color: #737D8C;
-$tertiary-fg-color: #8D99A5;
+$secondary-fg-color: #737d8c;
+$tertiary-fg-color: #8d99a5;
 $header-panel-bg-color: #f3f8fd;
 
 // typical text (dark-on-white in light skin)
-$primary-bg-color: #ffffff;
+$primary-bg-color: #eaf0fb;
 $muted-fg-color: #61708b; // Commonly used in headings and relevant alt text
 
 // used for dialog box text
@@ -37,7 +182,7 @@ $focus-bg-color: #dddddd;
 $accent-fg-color: #ffffff;
 $accent-color-50pct: rgba($accent-color, 0.5);
 $accent-color-darker: #92caad;
-$accent-color-alt: #238CF5;
+$accent-color-alt: #238cf5;
 
 $selection-fg-color: $primary-bg-color;
 
@@ -47,8 +192,8 @@ $focus-brightness: 105%;
 $warning-color: $notice-primary-color; // red
 $orange-warning-color: #ff8d13; // used for true warnings
 // background colour for warnings
-$warning-bg-color: #DF2A8B;
-$info-bg-color: #2A9EDF;
+$warning-bg-color: #df2a8b;
+$info-bg-color: #2a9edf;
 $mention-user-pill-bg-color: $warning-color;
 $other-user-pill-bg-color: rgba(0, 0, 0, 0.1);
 
@@ -153,15 +298,15 @@ $roomheader-color: #45474a;
 $roomheader-bg-color: $primary-bg-color;
 $roomheader-addroom-bg-color: rgba(92, 100, 112, 0.2);
 $roomheader-addroom-fg-color: #5c6470;
-$groupFilterPanel-button-color: #91A1C0;
-$groupheader-button-color: #91A1C0;
-$rightpanel-button-color: #91A1C0;
-$icon-button-color: #C1C6CD;
+$groupFilterPanel-button-color: #91a1c0;
+$groupheader-button-color: #91a1c0;
+$rightpanel-button-color: #91a1c0;
+$icon-button-color: #c1c6cd;
 $roomtopic-color: #9e9e9e;
 $eventtile-meta-color: $roomtopic-color;
 
-$composer-e2e-icon-color: #91A1C0;
-$header-divider-color: #91A1C0;
+$composer-e2e-icon-color: #91a1c0;
+$header-divider-color: #91a1c0;
 
 // this probably shouldn't have it's own colour
 $voipcall-plinth-color: #f2f5f8;
@@ -178,21 +323,21 @@ $roomsublist-divider-color: $primary-fg-color;
 $roomsublist-skeleton-ui-bg: linear-gradient(180deg, #ffffff 0%, #ffffff00 100%);
 
 $groupFilterPanel-divider-color: $roomlist-header-color;
-$space-button-outline-color: #E3E8F0;
+$space-button-outline-color: #e3e8f0;
 
 $roomtile-preview-color: $secondary-fg-color;
 $roomtile-default-badge-bg-color: #61708b;
-$roomtile-selected-bg-color: #FFF;
+$roomtile-selected-bg-color: #fff;
 
 $presence-online: $accent-color;
 $presence-away: #d9b072;
-$presence-offline: #E3E8F0;
+$presence-offline: #e3e8f0;
 
 // ********************
 
 $username-variant1-color: #368bd6;
 $username-variant2-color: #ac3ba8;
-$username-variant3-color: #0DBD8B;
+$username-variant3-color: #0dbd8b;
 $username-variant4-color: #e64f7a;
 $username-variant5-color: #ff812d;
 $username-variant6-color: #2dc2c5;
@@ -210,7 +355,7 @@ $pinned-color: $notice-secondary-color;
 // ********************
 
 $widget-menu-bar-bg-color: $secondary-accent-color;
-$widget-body-bg-color: #FFF;
+$widget-body-bg-color: #fff;
 
 // ********************
 
@@ -368,7 +513,7 @@ $composer-shadow-color: rgba(0, 0, 0, 0.04);
 @define-mixin mx_DialogButton_secondary {
     // flip colours for the secondary ones
     font-weight: 600;
-    border: 1px solid $accent-color ! important;
+    border: 1px solid $accent-color !important;
     color: $accent-color;
     background-color: $button-secondary-bg-color;
 }
