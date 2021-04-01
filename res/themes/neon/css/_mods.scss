@@ -187,3 +187,12 @@ a:visited {
 .mx_AccessibleButton_hasKind {
     border-radius: 6px;
 }
+
+// Hidden elements.
+.mx_MFileBody_download {
+    display: none;
+}
+
+.mx_EventTile_readAvatars {
+    display: none;
+}
