@@ -17,13 +17,14 @@ limitations under the License.
 */
 
 const IS_JEL = window["IS_JEL"];
+// JEL - left panel is disabled
 
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { MatrixClient } from 'matrix-js-sdk/src/client';
 import { DragDropContext } from 'react-beautiful-dnd';
 
-import {Key, isOnlyCtrlOrCmdKeyEvent, isOnlyCtrlOrCmdIgnoreShiftKeyEvent, isMac} from '../../Keyboard';
+import {Key/*, isOnlyCtrlOrCmdKeyEvent, isOnlyCtrlOrCmdIgnoreShiftKeyEvent, isMac*/} from '../../Keyboard';
 import PageTypes from '../../PageTypes';
 import CallMediaHandler from '../../CallMediaHandler';
 import { fixupColorFonts } from '../../utils/FontManager';
@@ -37,7 +38,7 @@ import RoomListActions from '../../actions/RoomListActions';
 import ResizeHandle from '../views/elements/ResizeHandle';
 import {Resizer, CollapseDistributor} from '../../resizer';
 import MatrixClientContext from "../../contexts/MatrixClientContext";
-import * as KeyboardShortcuts from "../../accessibility/KeyboardShortcuts";
+//import * as KeyboardShortcuts from "../../accessibility/KeyboardShortcuts";
 import HomePage from "./HomePage";
 import ResizeNotifier from "../../utils/ResizeNotifier";
 import PlatformPeg from "../../PlatformPeg";
@@ -49,12 +50,12 @@ import {
 import { Action } from "../../dispatcher/actions";
 import LeftPanel from "./LeftPanel";
 import CallContainer from '../views/voip/CallContainer';
-import { ViewRoomDeltaPayload } from "../../dispatcher/payloads/ViewRoomDeltaPayload";
+//import { ViewRoomDeltaPayload } from "../../dispatcher/payloads/ViewRoomDeltaPayload";
 import RoomListStore from "../../stores/room-list/RoomListStore";
 import NonUrgentToastContainer from "./NonUrgentToastContainer";
-import { ToggleRightPanelPayload } from "../../dispatcher/payloads/ToggleRightPanelPayload";
+//import { ToggleRightPanelPayload } from "../../dispatcher/payloads/ToggleRightPanelPayload";
 import { IThreepidInvite } from "../../stores/ThreepidInviteStore";
-import Modal from "../../Modal";
+//import Modal from "../../Modal";
 import { ICollapseConfig } from "../../resizer/distributors/collapse";
 import HostSignupContainer from '../views/host_signup/HostSignupContainer';
 import { IOpts } from "../../createRoom";
@@ -471,76 +472,71 @@ class LoggedInView extends React.Component<IProps, IState> {
                     handled = true;
                 }
                 break;
-            // JEL
-            //case Key.K:
-            //    if (ctrlCmdOnly) {
-            //        dis.dispatch({
-            //            action: 'focus_room_filter',
-            //        });
-            //        handled = true;
-            //    }
-            //    break;
-            // JEL
-            //case Key.F:
-            //    if (ctrlCmdOnly && SettingsStore.getValue("ctrlFForSearch")) {
-            //        dis.dispatch({
-            //            action: 'focus_search',
-            //        });
-            //        handled = true;
-            //    }
-            //    break;
-            // JEL
-            // case Key.BACKTICK:
-            //    // Ideally this would be CTRL+P for "Profile", but that's
-            //    // taken by the print dialog. CTRL+I for "Information"
-            //    // was previously chosen but conflicted with italics in
-            //    // composer, so CTRL+` it is
+                // JEL - disable hotkeys
+                //case Key.K:
+                //    if (ctrlCmdOnly) {
+                //        dis.dispatch({
+                //            action: 'focus_room_filter',
+                //        });
+                //        handled = true;
+                //    }
+                //    break;
+                //case Key.F:
+                //    if (ctrlCmdOnly && SettingsStore.getValue("ctrlFForSearch")) {
+                //        dis.dispatch({
+                //            action: 'focus_search',
+                //        });
+                //        handled = true;
+                //    }
+                //    break;
+                // case Key.BACKTICK:
+                //    // Ideally this would be CTRL+P for "Profile", but that's
+                //    // taken by the print dialog. CTRL+I for "Information"
+                //    // was previously chosen but conflicted with italics in
+                //    // composer, so CTRL+` it is
 
-            //    if (ctrlCmdOnly) {
-            //        dis.fire(Action.ToggleUserMenu);
-            //        handled = true;
-            //    }
-            //    break;
+                //    if (ctrlCmdOnly) {
+                //        dis.fire(Action.ToggleUserMenu);
+                //        handled = true;
+                //    }
+                //    break;
+                //case Key.SLASH:
+                //    if (isOnlyCtrlOrCmdIgnoreShiftKeyEvent(ev)) {
+                //        KeyboardShortcuts.toggleDialog();
+                //        handled = true;
+                //    }
+                //    break;
+                //case Key.H:
+                //    if (ev.altKey && modKey) {
+                //        dis.dispatch({
+                //            action: 'view_home_page',
+                //        });
+                //        Modal.closeCurrentModal("homeKeyboardShortcut");
+                //        handled = true;
+                //    }
+                //    break;
 
-            // Jel
-            //case Key.SLASH:
-            //    if (isOnlyCtrlOrCmdIgnoreShiftKeyEvent(ev)) {
-            //        KeyboardShortcuts.toggleDialog();
-            //        handled = true;
-            //    }
-            //    break;
+                //case Key.ARROW_UP:
+                //case Key.ARROW_DOWN:
+                //    if (ev.altKey && !ev.ctrlKey && !ev.metaKey) {
+                //        dis.dispatch<ViewRoomDeltaPayload>({
+                //            action: Action.ViewRoomDelta,
+                //            delta: ev.key === Key.ARROW_UP ? -1 : 1,
+                //            unread: ev.shiftKey,
+                //        });
+                //        handled = true;
+                //    }
+                //    break;
 
-            //case Key.H:
-            //    if (ev.altKey && modKey) {
-            //        dis.dispatch({
-            //            action: 'view_home_page',
-            //        });
-            //        Modal.closeCurrentModal("homeKeyboardShortcut");
-            //        handled = true;
-            //    }
-            //    break;
-
-            //case Key.ARROW_UP:
-            //case Key.ARROW_DOWN:
-            //    if (ev.altKey && !ev.ctrlKey && !ev.metaKey) {
-            //        dis.dispatch<ViewRoomDeltaPayload>({
-            //            action: Action.ViewRoomDelta,
-            //            delta: ev.key === Key.ARROW_UP ? -1 : 1,
-            //            unread: ev.shiftKey,
-            //        });
-            //        handled = true;
-            //    }
-            //    break;
-
-            //case Key.PERIOD:
-            //    if (ctrlCmdOnly && (this.props.page_type === "room_view" || this.props.page_type === "group_view")) {
-            //        dis.dispatch<ToggleRightPanelPayload>({
-            //            action: Action.ToggleRightPanel,
-            //            type: this.props.page_type === "room_view" ? "room" : "group",
-            //        });
-            //        handled = true;
-            //    }
-            //    break;
+                //case Key.PERIOD:
+                //    if (ctrlCmdOnly && (this.props.page_type === "room_view" || this.props.page_type === "group_view")) {
+                //        dis.dispatch<ToggleRightPanelPayload>({
+                //            action: Action.ToggleRightPanel,
+                //            type: this.props.page_type === "room_view" ? "room" : "group",
+                //        });
+                //        handled = true;
+                //    }
+                //    break;
 
             default:
                 // if we do not have a handler for it, pass it to the platform which might
@@ -709,6 +705,7 @@ class LoggedInView extends React.Component<IProps, IState> {
                         }
                     </DragDropContext>
                 </div>
+                // JEL - Disable toasts
                 { !IS_JEL && <CallContainer />}
                 { !IS_JEL && <NonUrgentToastContainer />}
                 { !IS_JEL && <HostSignupContainer />}

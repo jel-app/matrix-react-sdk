@@ -55,7 +55,7 @@ export class RoomListStoreClass extends AsyncStoreWithClient<IState> {
      */
     public static TEST_MODE = false;
 
-    private enabled = true; // JEL
+    private enabled = true; // JEL - Added support for enabling/disableing room list store
     private initialListsGenerated = false;
     private algorithm = new Algorithm();
     private filterConditions: IFilterCondition[] = [];
@@ -669,7 +669,7 @@ export default class RoomListStore {
 
     public static get instance(): RoomListStoreClass {
         if (!RoomListStore.internalInstance) {
-            RoomListStore.internalInstance = new RoomListStoreClass(!IS_JEL); // Disable store in Jel UI
+            RoomListStore.internalInstance = new RoomListStoreClass(!IS_JEL); // JEL - disable store in Jel, since it is not needed
         }
 
         return RoomListStore.internalInstance;

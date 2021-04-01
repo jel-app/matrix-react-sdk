@@ -210,6 +210,7 @@ class _MatrixClientPeg implements IMatrixClientPeg {
         // try to initialise e2e on the new client
         try {
             // check that we have a version of the js-sdk which includes initCrypto
+            // JEL - for now, crypto is disabled.
             if (!IS_JEL && !SettingsStore.getValue("lowBandwidth") && this.matrixClient.initCrypto) {
                 await this.matrixClient.initCrypto();
                 this.matrixClient.setCryptoTrustCrossSignedDevices(

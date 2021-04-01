@@ -1021,7 +1021,7 @@ class CreationGrouper {
                  summaryMembers={[ev.sender]}
                  summaryText={summaryText}
             >
-                 { !IS_JEL && eventTiles }
+                 { !IS_JEL && eventTiles } // JEL disable room creation summary
             </EventListSummary>,
         );
 

@@ -1699,7 +1699,7 @@ export default class RoomView extends React.Component<IProps, IState> {
         if (!this.state.room) {
             const loading = !this.state.matrixClientIsReady || this.state.roomLoading || this.state.peekLoading;
             if (loading) {
-                if (IS_JEL) return <div />;
+                if (IS_JEL) return <div />; // JEL - Disable preview loading screen
 
                 // Assume preview loading if we don't have a ready client or a room ID (still resolving the alias)
                 const previewLoading = !this.state.matrixClientIsReady || !this.state.roomId || this.state.peekLoading;
@@ -1752,7 +1752,7 @@ export default class RoomView extends React.Component<IProps, IState> {
         const myMembership = this.state.room.getMyMembership();
         if (myMembership === "invite" && !this.state.room.isSpaceRoom()) { // SpaceRoomView handles invites itself
             if (this.state.joining || this.state.rejecting) {
-                if (IS_JEL) return <div />;
+                if (IS_JEL) return <div />; // JEL - Disable room preview
 
                 return (
                     <ErrorBoundary>
@@ -1773,7 +1773,7 @@ export default class RoomView extends React.Component<IProps, IState> {
                     inviterName = inviteEvent.sender ? inviteEvent.sender.name : inviteEvent.getSender();
                 }
 
-                if (IS_JEL) return <div />;
+                if (IS_JEL) return <div />; // JEL - Disable room preview
 
                 // We deliberately don't try to peek into invites, even if we have permission to peek
                 // as they could be a spam vector.
@@ -1877,7 +1877,7 @@ export default class RoomView extends React.Component<IProps, IState> {
         } else if (myMembership !== "join") {
             // We do have a room object for this room, but we're not currently in it.
             // We may have a 3rd party invite to it.
-            if (IS_JEL) return <div />;
+            if (IS_JEL) return <div />; // JEL - disable room preview
 
             let inviterName = undefined;
             if (this.props.oobData) {
@@ -2085,7 +2085,7 @@ export default class RoomView extends React.Component<IProps, IState> {
                         <EffectsOverlay roomWidth={this.roomView.current.offsetWidth} />
                     }
                     <ErrorBoundary>
-                        {!IS_JEL && <RoomHeader
+                        {!IS_JEL && <RoomHeader // JEL - Disable room header, is drawn by outer UI
                             room={this.state.room}
                             searchInfo={searchInfo}
                             oobData={this.props.oobData}

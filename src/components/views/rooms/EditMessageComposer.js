@@ -81,7 +81,7 @@ function createEditContent(model, editedEvent) {
         "body": body,
     };
 
-    // JEL
+    // JEL - Copy spaceroom_id
     if (editedEvent.getContent().spaceroom_id) {
         newContent.spaceroom_id = editedEvent.getContent().spaceroom_id;
     }

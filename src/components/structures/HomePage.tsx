@@ -94,7 +94,7 @@ const UserWelcomeTop = () => {
 };
 
 const HomePage: React.FC<IProps> = ({ justRegistered = false }) => {
-    if (IS_JEL) return <div />;
+    if (IS_JEL) return <div />; // JEL - homepage is disabled
 
     const config = SdkConfig.get();
     const pageUrl = getHomePageUrl(config);

@@ -79,7 +79,7 @@ const NewRoomIntro = () => {
 
         let topicText;
 
-        if (!IS_JEL) {
+        if (!IS_JEL) { // JEL - remove topic tip
             if (canAddTopic && topic) {
                 topicText = _t("Topic: %(topic)s (<a>edit</a>)", { topic }, {
                     a: sub => <AccessibleButton kind="link" onClick={onTopicClick}>{ sub }</AccessibleButton>,
@@ -98,7 +98,7 @@ const NewRoomIntro = () => {
 
         let createdText;
 
-        if (!IS_JEL) {
+        if (!IS_JEL) { // JEL - disable creator info (dyna)
             if (creator === cli.getUserId()) {
                 createdText = _t("You created this room.");
             } else {
@@ -123,7 +123,7 @@ const NewRoomIntro = () => {
 
         const avatarUrl = room.currentState.getStateEvents(EventType.RoomAvatar, "")?.getContent()?.url;
         body = <React.Fragment>
-            {!IS_JEL && <MiniAvatarUploader
+            {!IS_JEL && <MiniAvatarUploader // JEL - disable room avatar
                 hasAvatar={!!avatarUrl}
                 noAvatarLabel={_t("Add a photo, so people can easily spot your room.")}
                 setAvatarUrl={url => cli.sendStateEvent(roomId, EventType.RoomAvatar, { url }, '')}

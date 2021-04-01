@@ -700,6 +700,7 @@ let _isLoggingOut = false;
 /**
  * Logs the current session out and transitions to the logged-out state
  */
+// JEL - this now returns a promise
 export function logout(): Promise<void> {
     if (!MatrixClientPeg.get()) return;
     if (!CountlyAnalytics.instance.disabled) {
@@ -807,7 +808,7 @@ async function startMatrixClient(startSyncing = true): Promise<void> {
         // before the client.
         await EventIndexPeg.init();
 
-        // JEL
+        // JEL - the pre client start callback allows the outer client to perform initialization
         while (!window["onPreClientStart"]) {
             await new Promise(res => setTimeout(res, 500));
         }
@@ -865,7 +866,7 @@ async function clearStorage(opts?: { deleteEverything?: boolean }): Promise<void
         // try to save any 3pid invites from being obliterated
         const pendingInvites = ThreepidInviteStore.instance.getWireInvites();
 
-        // JEL - this would blow away Jel state
+        // JEL - clearing local storage would blow away Jel state, so just remove mx_* keys
         //window.localStorage.clear();
         let i = 0;
         let k = localStorage.key(i);
