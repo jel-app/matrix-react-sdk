@@ -158,6 +158,9 @@ export const Notifier = {
     },
 
     _playAudioNotification: async function(ev: MatrixEvent, room: Room) {
+        // JEL disable sounds
+        return;
+
         const sound = this.getSoundForRoom(room.roomId);
         console.log(`Got sound ${sound && sound.name || "default"} for ${room.roomId}`);
 
