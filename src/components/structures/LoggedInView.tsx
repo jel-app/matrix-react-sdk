@@ -705,7 +705,6 @@ class LoggedInView extends React.Component<IProps, IState> {
                         }
                     </DragDropContext>
                 </div>
-                // JEL - Disable toasts
                 { !IS_JEL && <CallContainer />}
                 { !IS_JEL && <NonUrgentToastContainer />}
                 { !IS_JEL && <HostSignupContainer />}
