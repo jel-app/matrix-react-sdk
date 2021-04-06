@@ -462,11 +462,11 @@ export default class MessageContextMenu extends React.Component {
                 { resendRedactionButton }
                 { redactButton }
                 { cancelButton }
-                { !IS_JEL && forwardButton } // JEL - disable forwarding
+                { !IS_JEL && forwardButton }
                 { pinButton }
-                { !IS_JEL && viewSourceButton } // JEL - disable view source
+                { !IS_JEL && viewSourceButton }
                 { unhidePreviewButton }
-                { !IS_JEL && permalinkButton } // JEL - disable permalinks
+                { !IS_JEL && permalinkButton }
                 { quoteButton }
                 { externalURLButton }
                 { collapseReplyThread }
