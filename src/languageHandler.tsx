@@ -26,10 +26,13 @@ import PlatformPeg from "./PlatformPeg";
 
 // @ts-ignore - $webapp is a webpack resolve alias pointing to the output directory, see webpack config
 import webpackLangJsonUrl from "$webapp/i18n/languages.json";
+
 import { SettingLevel } from "./settings/SettingLevel";
 import {retry} from "./utils/promise";
 
-const i18nFolder = 'i18n/';
+const langPathParts = webpackLangJsonUrl.split("/");
+langPathParts.pop();
+const i18nFolder = langPathParts.join("/") + "/";
 
 // Control whether to also return original, untranslated strings
 // Useful for debugging and testing
